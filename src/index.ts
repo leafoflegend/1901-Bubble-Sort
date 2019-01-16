@@ -1,22 +1,67 @@
-type BubbleSort<T> = (toSort: T[]) => T[];
-const bubbleSort: BubbleSort<number> = (numbers: number[]) => {
-  let unsorted = false;
-  const copiedNumbers = numbers.slice();
+const swap = (arr: number[], idx: number, idxTwo: number): void => {
+  const v1 = arr[idx];
+  const v2 = arr[idxTwo];
 
-  for (let i = 0; i < copiedNumbers.length - 1; ++i) {
-    const currentNum = copiedNumbers[i];
-    const nextNum = copiedNumbers[i + 1];
-    if (currentNum > nextNum) {
-      unsorted = true;
-      copiedNumbers[i] = nextNum;
-      copiedNumbers[i + 1] = currentNum;
+  arr[idx] = v2;
+  arr[idxTwo] = v1;
+};
+
+let counter: number = 0;
+
+type BubbleSort = (arrOfNumbers: number[]) => number[];
+const IterativebubbleSort: BubbleSort = (arrOfNumbers = []) => {
+  const copiedArrOfNumbers = arrOfNumbers.slice();
+
+  console.time('BubbleSort');
+  for (let i = copiedArrOfNumbers.length - 1; i > 0; --i) {
+    let sorted = true;
+
+    for (let j = 0; j < i; ++j) {
+      ++counter;
+
+      const currentNum = copiedArrOfNumbers[j];
+      const nextNum = copiedArrOfNumbers[j + 1];
+
+      if (currentNum > nextNum) {
+        swap(copiedArrOfNumbers, j, j + 1);
+
+        sorted = false;
+      }
+    }
+
+    if (sorted) {
+      console.log('Long Counter: ', counter);
+      console.timeEnd('BubbleSort');
+      return copiedArrOfNumbers;
     }
   }
 
-  if (unsorted) return bubbleSort(copiedNumbers);
-
-  return copiedNumbers;
+  console.log('Counter: ', counter);
+  return copiedArrOfNumbers;
 };
 
-module.exports = bubbleSort;
+const bubbleSort: BubbleSort = (arrOfNumbers = []) => {
+  const copiedArrOfNumbers = arrOfNumbers.slice();
+  let sorted = true;
+
+  for (let i = 0; i < copiedArrOfNumbers.length - 1; ++i) {
+    const currentNum = copiedArrOfNumbers[i];
+    const nextNum = copiedArrOfNumbers[i + 1];
+
+    if (currentNum > nextNum) {
+      copiedArrOfNumbers[i] = nextNum;
+      copiedArrOfNumbers[i + 1] = currentNum;
+
+      sorted = false;
+    }
+  }
+
+  if (!sorted) {
+    return bubbleSort(copiedArrOfNumbers.slice(0, -1))
+      .concat(copiedArrOfNumbers[copiedArrOfNumbers.length - 1]);
+  }
+
+  return copiedArrOfNumbers;
+};
+
 export = bubbleSort;
