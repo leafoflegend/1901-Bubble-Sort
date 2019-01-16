@@ -19,3 +19,4 @@ const bubbleSort: BubbleSort<number> = (numbers: number[]) => {
 };
 
 module.exports = bubbleSort;
+export = bubbleSort;
