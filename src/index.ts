@@ -1,12 +1,10 @@
-const swap = (arr: number[], idx: number, idxTwo: number): void => {
-  const v1 = arr[idx];
-  const v2 = arr[idxTwo];
-
-  arr[idx] = v2;
-  arr[idxTwo] = v1;
-};
-
-type BubbleSort = (arrOfNumbers: number[]) => number[];
+// const swap = (arr: number[], idx: number, idxTwo: number): void => {
+//   const v1 = arr[idx];
+//   const v2 = arr[idxTwo];
+//
+//   arr[idx] = v2;
+//   arr[idxTwo] = v1;
+// };
 // const IterativebubbleSort: BubbleSort = (arrOfNumbers = []) => {
 //   const copiedArrOfNumbers = arrOfNumbers.slice();
 //
@@ -33,6 +31,7 @@ type BubbleSort = (arrOfNumbers: number[]) => number[];
 //   return copiedArrOfNumbers;
 // };
 
+type BubbleSort = (arrOfNumbers: number[]) => number[];
 const bubbleSort: BubbleSort = (arrOfNumbers = []) => {
   const copiedArrOfNumbers = arrOfNumbers.slice();
   let sorted = true;

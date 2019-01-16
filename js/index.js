@@ -4,30 +4,31 @@ const swap = (arr, idx, idxTwo) => {
   arr[idx] = v2;
   arr[idxTwo] = v1;
 };
-let counter = 0;
-const IterativebubbleSort = (arrOfNumbers = []) => {
-  const copiedArrOfNumbers = arrOfNumbers.slice();
-  console.time('BubbleSort');
-  for (let i = copiedArrOfNumbers.length - 1; i > 0; --i) {
-    let sorted = true;
-    for (let j = 0; j < i; ++j) {
-      ++counter;
-      const currentNum = copiedArrOfNumbers[j];
-      const nextNum = copiedArrOfNumbers[j + 1];
-      if (currentNum > nextNum) {
-        swap(copiedArrOfNumbers, j, j + 1);
-        sorted = false;
-      }
-    }
-    if (sorted) {
-      console.log('Long Counter: ', counter);
-      console.timeEnd('BubbleSort');
-      return copiedArrOfNumbers;
-    }
-  }
-  console.log('Counter: ', counter);
-  return copiedArrOfNumbers;
-};
+// const IterativebubbleSort: BubbleSort = (arrOfNumbers = []) => {
+//   const copiedArrOfNumbers = arrOfNumbers.slice();
+//
+//   console.time('BubbleSort');
+//   for (let i = copiedArrOfNumbers.length - 1; i > 0; --i) {
+//     let sorted = true;
+//
+//     for (let j = 0; j < i; ++j) {//
+//       const currentNum = copiedArrOfNumbers[j];
+//       const nextNum = copiedArrOfNumbers[j + 1];
+//
+//       if (currentNum > nextNum) {
+//         swap(copiedArrOfNumbers, j, j + 1);
+//
+//         sorted = false;
+//       }
+//     }
+//
+//     if (sorted) {
+//       return copiedArrOfNumbers;
+//     }
+//   }
+//
+//   return copiedArrOfNumbers;
+// };
 const bubbleSort = (arrOfNumbers = []) => {
   const copiedArrOfNumbers = arrOfNumbers.slice();
   let sorted = true;
